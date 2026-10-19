@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "D2L Course Downloader",
+  "version": "1.5.5",
+  "description": "Download every file in a D2L Brightspace course into one folder, with subfolders matching the course content.",
+  "permissions": ["activeTab", "scripting", "downloads", "storage", "offscreen"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "action": {
+    "default_title": "Download this D2L course",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

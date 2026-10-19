@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>D2L Course Downloader</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="mark" aria-hidden="true"></div>
+      <div>
+        <h1>D2L Course Downloader</h1>
+        <p>One folder per course, matching the content page.</p>
+      </div>
+    </header>
+
+    <p id="status" class="status">Open a Brightspace course, then scan it.</p>
+
+    <section id="result" hidden>
+      <label class="field">
+        Folder name
+        <input id="folder-name" type="text" spellcheck="false" />
+      </label>
+      <label class="field">
+        Organize by
+        <select id="organize">
+          <option value="module">Module</option>
+          <option value="course">Course</option>
+          <option value="topic">Topic</option>
+        </select>
+      </label>
+      <p class="extra">Module matches the content page. Course puts every file in one folder. Topic adds a folder for each item. Files with the same name stay separate.</p>
+      <div class="location">
+        <div>
+          <span id="location-label">Save this folder in</span>
+          <strong id="location-name">Downloads</strong>
+        </div>
+        <div class="location-actions">
+          <button id="choose-location" type="button" class="ghost">Choose…</button>
+          <button id="use-downloads" type="button" class="ghost" hidden>Downloads</button>
+        </div>
+      </div>
+      <p id="summary"></p>
+      <div class="tools">
+        <label id="hidden-label" class="check" hidden>
+          <input id="include-hidden" type="checkbox" checked />
+          <span id="hidden-text">Include hidden items</span>
+        </label>
+        <button id="select-all" type="button" class="text">Select all</button>
+        <button id="select-none" type="button" class="text">Clear</button>
+      </div>
+      <p class="types-label">File types in this course</p>
+      <div id="types" class="types"></div>
+      <label class="check">
+        <input id="as-zip" type="checkbox" />
+        <span>Download the selection as one zip</span>
+      </label>
+      <div id="tree" class="tree"></div>
+      <p id="extra" class="extra"></p>
+    </section>
+
+    <section id="progress" hidden>
+      <div class="bar" aria-hidden="true"><span id="bar-fill"></span></div>
+      <p id="progress-label"></p>
+      <p id="progress-current"></p>
+      <ul id="errors"></ul>
+    </section>
+
+    <div class="actions">
+      <button id="scan" type="button">Scan this course</button>
+      <button id="download" type="button" hidden>Download</button>
+      <button id="resume-saved" type="button" class="ghost" hidden>Resume saved download</button>
+      <button id="pause" type="button" class="ghost" hidden>Pause</button>
+      <button id="resume" type="button" hidden>Resume</button>
+      <button id="cancel" type="button" class="ghost" hidden>Cancel</button>
+    </div>
+
+    <p class="hint">
+      Clicking away does not stop a download. If Chrome asks where to save every file, turn that off under Settings, Downloads.
+    </p>
+
+    <dialog id="intro">
+      <h2>Turn off Chrome’s save prompt</h2>
+      <p>Chrome asks where to save each file. With that on, every file in the course opens its own save window.</p>
+      <ol>
+        <li>Open Chrome’s Downloads settings.</li>
+        <li>Turn off “Ask where to save each file before downloading”.</li>
+      </ol>
+      <div class="actions">
+        <button id="open-settings" type="button">Open Downloads settings</button>
+        <button id="intro-done" type="button" class="ghost">Got it</button>
+      </div>
+    </dialog>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

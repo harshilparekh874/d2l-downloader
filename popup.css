@@ -1,0 +1,250 @@
+:root {
+  color: #1c2430;
+  background: #f3efe6;
+  font: 13px/1.4 "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 400px;
+  margin: 0;
+  padding: 14px 14px 12px;
+}
+
+body.picker {
+  width: auto;
+  min-height: 160px;
+}
+
+body.picker h1 { margin-bottom: 8px; }
+body.picker p { margin-bottom: 12px; }
+
+header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.mark {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 9px;
+  background:
+    linear-gradient(#fffdf8, #fffdf8) 10px 16px / 16px 10px no-repeat,
+    linear-gradient(#e8a15a, #e8a15a) 8px 14px / 20px 12px no-repeat,
+    linear-gradient(#c4551a, #c4551a) 8px 12px / 10px 4px no-repeat,
+    #1c2430;
+}
+
+h1, h2, p { margin: 0; }
+
+h1 { font-size: 15px; }
+
+header p, .hint, .extra, #summary, #progress-current {
+  color: #5c6775;
+}
+
+header p { margin-top: 2px; }
+
+.status {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fffdf8;
+  border: 1px solid #e4ddd0;
+}
+
+.field, .location {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.field input, .field select {
+  width: 100%;
+  border: 1px solid #c9c0b2;
+  border-radius: 8px;
+  padding: 7px 8px;
+  font: inherit;
+  color: inherit;
+  background: #fffdf8;
+}
+
+.location {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #e4ddd0;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.location span, .tools { color: #5c6775; }
+
+.location-actions, .tools, .actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.tools { margin: 4px 0 8px; flex-wrap: wrap; }
+
+.check {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.tree {
+  max-height: 280px;
+  overflow: auto;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fffdf8;
+  border: 1px solid #e4ddd0;
+}
+
+.tree details { margin-left: 8px; }
+.tree summary { cursor: pointer; font-weight: 600; }
+.tree summary input, .tree li input { margin: 2px 6px 0 0; }
+.tree ul {
+  margin: 4px 0 8px;
+  padding-left: 18px;
+}
+.tree li { color: #3d4754; list-style: none; }
+.tree ul { list-style: none; padding-left: 22px; }
+.tree label { display: flex; align-items: flex-start; }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #c4551a;
+  color: #fffdf8;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+button.ghost {
+  background: transparent;
+  color: #1c2430;
+  border: 1px solid #c9c0b2;
+}
+
+button.text {
+  background: transparent;
+  color: #c4551a;
+  padding: 0;
+  font-weight: 600;
+}
+
+.bar {
+  height: 8px;
+  border-radius: 99px;
+  background: #e4ddd0;
+  overflow: hidden;
+}
+
+#bar-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #c4551a;
+  transition: width 0.25s linear;
+}
+
+#bar-fill.active {
+  background-image: linear-gradient(90deg, #c4551a 0%, #e8a15a 50%, #c4551a 100%);
+  background-size: 200% 100%;
+  animation: bar-slide 1s linear infinite;
+}
+
+@keyframes bar-slide {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+#progress-label { margin: 8px 0 2px; font-weight: 600; }
+#progress-current {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#errors {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: #8a2e12;
+}
+
+.types-label {
+  margin: 2px 0 6px;
+  color: #5c6775;
+}
+
+.types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.chip {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin: 0;
+  padding: 3px 8px 3px 6px;
+  border: 1px solid #e4ddd0;
+  border-radius: 99px;
+  background: #fffdf8;
+}
+
+.chip .count { color: #5c6775; }
+
+dialog {
+  width: calc(100% - 28px);
+  max-width: 360px;
+  border: 1px solid #e4ddd0;
+  border-radius: 12px;
+  padding: 14px;
+  color: inherit;
+  background: #fffdf8;
+}
+
+dialog::backdrop { background: rgba(28, 36, 48, 0.45); }
+
+dialog h2 { font-size: 15px; margin-bottom: 6px; }
+
+dialog p { color: #5c6775; }
+
+dialog ol {
+  margin: 8px 0 12px;
+  padding-left: 18px;
+}
+
+dialog .actions { margin-top: 0; }
+
+.hint { margin-top: 10px; font-size: 12px; }
+
+.extra { margin-top: 8px; }
